@@ -16,7 +16,7 @@ podTemplate(yaml: '''
           mountPath: /var/secrets/google
         env:
         - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/week9project-381822-b2929df8ca6e.json
+          value: /var/secrets/google/projectv2-381913-9b0d3109d8df.json
       restartPolicy: Never
       volumes:
       - name: shared-storage
@@ -35,7 +35,7 @@ podTemplate(yaml: '''
           kubectl get ns
           ls -l /var/secrets/google
           gcloud auth login --cred-file=$GOOGLE_APPLICATION_CREDENTIALS
-          gcloud container clusters get-credentials hello-cluster --region us-east1 --project week9project-381822
+          gcloud container clusters get-credentials hello-cluster --region us-west1 --project projectv2-381913
           echo 'namespaces in the prod environment'
           kubectl get ns
           '''
