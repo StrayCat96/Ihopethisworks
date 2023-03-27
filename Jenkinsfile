@@ -33,10 +33,9 @@ podTemplate(yaml: '''
           sh '''
           echo 'namespaces in the staging environment'
           kubectl get ns
-          ls -l /var/secrets/google
           gcloud auth login --cred-file=$GOOGLE_APPLICATION_CREDENTIALS
-          gcloud container clusters get-credentials hello-cluster --region us-east1 --project week9project-381822
           gcloud config set project week9project-381822
+          gcloud container clusters get-credentials hello-cluster --region us-east1 --project week9project-381822
           echo 'namespaces in the prod environment'
           kubectl get ns
           '''
