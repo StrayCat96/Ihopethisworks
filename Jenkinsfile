@@ -37,7 +37,6 @@ podTemplate(yaml: '''
           gcloud container clusters get-credentials hello-cluster --region us-west1 --project projectv2-381913
           git clone 'https://github.com/StrayCat96/Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition'
           cd Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition/Chapter08/sample1
-          chmod +x ./kubectl
           ./kubectl apply -f calculator.yaml -n devops-tools
           ./kubectl apply -f hazelcast.yaml -n devops-tools
           '''
