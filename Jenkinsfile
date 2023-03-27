@@ -29,15 +29,17 @@ podTemplate(yaml: '''
   node(POD_LABEL) {
     stage('Deploying to prod') {
       container('cloud-sdk') {
-        stage('Build a gradle project') {
+        stage('Deploy calculator') {
           sh '''
           echo 'namespaces in the staging environment'
           kubectl get ns
-          ls -l /var/secrets/google
           gcloud auth login --cred-file=$GOOGLE_APPLICATION_CREDENTIALS
           gcloud container clusters get-credentials hello-cluster --region us-west1 --project projectv2-381913
-          echo 'namespaces in the prod environment'
-          kubectl get ns
+          git clone 'https://github.com/StrayCat96/Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition'
+          cd Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition/Chapter08/sample1
+          chmod +x ./kubectl
+          ./kubectl apply -f calculator.yaml -n devops-tools
+          ./kubectl apply -f hazelcast.yaml -n devops-tools
           '''
          }
         } 
